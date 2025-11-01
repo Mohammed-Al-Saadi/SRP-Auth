@@ -44,12 +44,12 @@ from utils.srpUtils import N, g, H, hex64_from_int,  new_session, clean_expired_
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ /srp-register — Client sends salt/verifier created from password locally   │
-# │ FRONTEND sends JSON:                                                       │
-# │ { full_name, email, salt: hex, verifier: hex }                             │
-# │ BACKEND stores BYTEA salt/verifier; never sees password.                   │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+
+# /srp-register — Client sends salt/verifier created from password locally   
+# FRONTEND sends JSON:                                                       
+# { full_name, email, salt: hex, verifier: hex }                             
+# BACKEND stores BYTEA salt/verifier; never sees password.                   
+
 srp_register_bp = Blueprint('srp_register_bp', __name__)
 
 @srp_register_bp.route('/srp-register', methods=['POST'])
@@ -83,12 +83,12 @@ def srp_register():
     return jsonify(result), status
 
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ /srp-login/start — Begin handshake                                         │
-# │ FRONTEND sends JSON: { email, A: hex }                                     │
-# │ BACKEND returns: { salt: hex, B: hex, session_id }                         │
-# │ Frontend will use these to compute S, K, and M1.                           │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# 
+#  /srp-login/start — Begin handshake                                         
+#  FRONTEND sends JSON: { email, A: hex }                                     
+#  BACKEND returns: { salt: hex, B: hex, session_id }                         
+#  Frontend will use these to compute S, K, and M1.                           
+# 
 srp_start_bp = Blueprint('srp_start_bp', __name__)
 
 @srp_start_bp.route("/srp-login/start", methods=["POST"])
@@ -177,12 +177,12 @@ def srp_login_start():
     })
 
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ /srp-login/verify — Client proves knowledge of password                    │
-# │ FRONTEND sends JSON: { session_id, email, M1: hex }                        │
-# │ BACKEND returns JSON: { message, M2: hex }                                 │
-# │ Client checks M2 locally to authenticate the server (mutual auth).         │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# 
+#  /srp-login/verify — Client proves knowledge of password                    
+#  FRONTEND sends JSON: { session_id, email, M1: hex }                        
+#  BACKEND returns JSON: { message, M2: hex }                                 
+#  Client checks M2 locally to authenticate the server (mutual auth).         
+# 
 srp_verify_bp = Blueprint('srp_verify_bp', __name__)
 
 @srp_verify_bp.route("/srp-login/verify", methods=["POST"])

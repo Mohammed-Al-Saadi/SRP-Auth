@@ -3,7 +3,6 @@ from psycopg2.extras import RealDictCursor
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
 load_dotenv()
 
 def get_db_connection():
