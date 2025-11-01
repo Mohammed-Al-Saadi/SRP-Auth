@@ -5,11 +5,10 @@ This implementation provides a minimal and educational version of the **Secure R
 It was created by following and adapting concepts from the **Nimbus SRP** and **Thinbus SRP** libraries, with several internal tweaks and simplifications for clarity and modern TypeScript use.
 
 ⚠️ **Important Note:**  
-Although this code is inspired by Nimbus and Thinbus SRP, it is **not binary compatible** with their official server or client implementations.  
-This means that values such as `A`, `B`, `x`, `v`, `M1`, `M2`, etc., produced by this version will **not interoperate** directly with those libraries.  
-The padding, hashing, and concatenation rules have been adjusted for simplicity and consistency within this implementation only.
+Although this code is inspired by Nimbus and Thinbus SRP, it is not binary compatible with their official server or client implementations.
+Values such as A, B, x, v, M1, M2, etc., produced by this implementation will not interoperate with those libraries. The padding, hashing, and concatenation rules have been intentionally adjusted for simplicity and internal consistency within this implementation only.
 
----
+## ⚠️⚠️⚠️⚠️⚠️This project is provided for learning and educational purposes. Do not use it in production systems.
 
 ### ⚠️ Compatibility Warning
 
